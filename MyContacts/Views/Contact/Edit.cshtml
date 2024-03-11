@@ -1,0 +1,45 @@
+﻿@model MyContacts.Models.Contact
+@{
+    ViewBag.Title = ViewBag.action;
+}
+
+
+<div class=" d-flex justify-content-center">
+    <h1 class="">Edit Contact</h1>
+</div>
+
+
+<form action="Edit" method="post">
+    <div asp-validation-summary="All"></div>
+    <div class="form-floating mb-3">
+        <input class="form-control" id="floatingFirstName" asp-for="FirstName" placeholder="First Name">
+        <label for="floatingFirstName" asp-for="FirstName">First Name</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input class="form-control" id="floatingLastName" asp-for="LastName" placeholder="Last Name">
+        <label for="floatingLastName" asp-for="LastName">Last Name</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input class="form-control" id="floatingPhoneNumber" asp-for="PhoneNumber" placeholder="Phone Number">
+        <label for="floatingLastName" asp-for="PhoneNumber">Phone Number</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input class="form-control" id="floatingEmail" asp-for="Email" placeholder="Email">
+        <label for="floatingEmail" asp-for="Email">Email</label>
+    </div>
+    <div>
+        <select asp-for="CategoryId" class="form-select">
+            <option value="">Select Category</option>
+            @foreach (var category in ViewBag.Categories)
+            {
+                <option value="@category.CategoryId">@category.Name</option>
+            }
+        </select>
+    </div>
+    <input type="hidden" asp-for="ContactId" />
+    <button type="submit" class="btn btn-primary mt-4">Save</button>
+
+
+
+
+</form>
