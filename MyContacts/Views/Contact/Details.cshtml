@@ -1,7 +1,9 @@
 ﻿@model MyContacts.Models.Contact
 @{
-    ViewBag.Title = "Contact Details";
+    ViewBag.Title = $"{Model.FirstName} {Model.LastName}";
 }
+
+<h1>@ViewBag.Title</h1>
 <table class="table table-striped">
 <tr>
         <th>

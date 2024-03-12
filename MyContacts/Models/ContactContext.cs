@@ -11,9 +11,17 @@ namespace MyContacts.Models
 
         public DbSet<Contact> Contacts { get; set; } = null!;
         public DbSet<Category> Categories { get; set; } = null!;
+        public DbSet<User> Users { get; set; } = null!;
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>().HasData(
+                               new User { Id = 1, UserName = "Admin", Password = "Admin" },
+                               new User { Id = 2, UserName = "gerry", Password = "password" }
+                                );
+
+
             modelBuilder.Entity<Category>().HasData(
               new Category { CategoryId = 1, Name = "Family" },
               new Category { CategoryId = 2, Name = "Friend" },
