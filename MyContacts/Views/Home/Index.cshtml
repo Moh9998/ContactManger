@@ -34,7 +34,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
             </td>
-            <td>
+            <td> 
 
                 <a class="btn btn-secondary" asp-controller="Contact" asp-action="Details" asp-route-id="@item.ContactId" asp-route-slug="@item.Slug"><i class="bi bi-info"></i></a> |
                 <a class="btn btn-danger" asp-controller="Contact" asp-action="Delete" asp-route-id="@item.ContactId"> <i class="bi bi-trash3"></i></a>

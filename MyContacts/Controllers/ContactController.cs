@@ -32,13 +32,8 @@ namespace MyContacts.Controllers
             ViewBag.Categories = _ctx.Categories.ToList();
             ViewBag.Action = "Edit";
 
-            if(contact is not null)
-            {
-                _ctx.Update(contact);
-                _ctx.SaveChanges();
-               
-            }
-            return View("Edit", contact);
+
+            return View("AddEdit", contact);
         }
 
         [HttpPost]
@@ -50,6 +45,11 @@ namespace MyContacts.Controllers
                 {
                     contact.DateAdded = DateTime.Now;
                     _ctx.Contacts.Add(contact);
+                }
+                else
+                {
+                    _ctx.Contacts.Update(contact);
+                   
                 }
                 
                 _ctx.SaveChanges();
