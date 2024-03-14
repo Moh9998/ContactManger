@@ -1,4 +1,5 @@
-﻿
+﻿<!-- Compare this snippet from MyContacts/Views/User/Register.cshtml: -->
+                             @model MyContacts.Models.User
 @{
     ViewBag.Title = "Register";
 }
@@ -6,28 +7,28 @@
 <h1 class="row justify-content-center"> @ViewBag.Title</h1>
 
 
-<div class="row justify-content-center">
-    <div class="col-md-4">
+<div class="row align-items-center row justify-content-center bg-warning bg-gradient rounded-5" style="height:500px;">
+    <div class="col-md-4 ">
         <form asp-action="Register" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div asp-validation-summary="ModelOnly" class="text-black"></div>
             <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
+                <label  class="control-label row justify-content-center m-4 fw-bold">Username</label>
                 <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
+                <span asp-validation-for="UserName" class="text-black"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
+                <label asp-for="Password" class="control-label row justify-content-center m-4 fw-bold"></label>
                 <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
+                <span asp-validation-for="Password" class="text-black"></span>
                 </div>
                 
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Register</button>
+                    <div class="form-group  justify-content-center mt-3">
+                        <button type="submit" class=" form-control btn btn-primary">Register</button>
                         </div>
-                        <div class="form-group">
-                            <a asp-controller="User" asp-action="Login">Login</a></div>
+                        <div class="form-group m-4">
+                            Alredy Having Account??
+                            <a asp-controller="User" asp-action="Login">Click Here</a>To login</div>
                             </form>
                             </div>
                      </div>
-                            <!-- Compare this snippet from MyContacts/Views/User/Register.cshtml: -->
-                             @model MyContacts.Models.User
+                            
