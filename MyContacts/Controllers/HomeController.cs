@@ -14,63 +14,48 @@ namespace MyContacts.Controllers
             _ctx = ctx;
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult Index(string search)
         {
-            var contacts = _ctx.Contacts
-                .Include(c => c.Category)
-                .OrderBy(c => c.LastName)
-                .ToList();
+            IQueryable<Contact> contactsQuery = _ctx.Contacts.Include(c => c.Category).OrderBy(c => c.LastName);
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                contactsQuery = contactsQuery.Where(c => c.LastName.Contains(search)
+                                                       || c.FirstName.Contains(search)
+                                                       || c.Email.Contains(search)
+                                                       || c.PhoneNumber.Contains(search)
+                                                       || c.Category.Name.Contains(search));
+            }
+
+            var contacts = contactsQuery.ToList();
+
             return View(contacts);
         }
 
-        [Authorize]
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
-        [Authorize]
-        public IActionResult Contact()
-        {
-            return View();
-        }
 
-        [Authorize]
-        public IActionResult About()
-        {
-            return View();
-        }
 
-        [Authorize]
-        public IActionResult Help()
-        {
-            return View();
-        }
 
-        [Authorize]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-    //}
-    //public class HomeController : Controller
-    //{
-    //    ContactContext _ctx;
-    //    public HomeController(ContactContext ctx)
-    //    {
-    //           _ctx = ctx;
-    //    }
-        
-    //    public IActionResult Index()
-    //    {
-    //        var contacts = _ctx.Contacts
-    //            .Include(c => c.Category)
-    //            .OrderBy(c => c.LastName)
-    //            .ToList();
-    //        return View(contacts);
-    //    }
+        //}
+        //public class HomeController : Controller
+        //{
+        //    ContactContext _ctx;
+        //    public HomeController(ContactContext ctx)
+        //    {
+        //           _ctx = ctx;
+        //    }
 
-       
-    //}
-}
+        //    public IActionResult Index()
+        //    {
+        //        var contacts = _ctx.Contacts
+        //            .Include(c => c.Category)
+        //            .OrderBy(c => c.LastName)
+        //            .ToList();
+        //        return View(contacts);
+        //    }
+
+
+        //}
     }
+}
