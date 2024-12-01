@@ -17,7 +17,8 @@ namespace MyContacts.Models
         [Required(ErrorMessage = "Please enter a phone number")]
         public string PhoneNumber { get; set; } = null!;
 
-        [Required(ErrorMessage = "Please enter an email")]
+        [Required(ErrorMessage = "Please enter an email"),
+         EmailAddress(ErrorMessage ="Please Enter Valid Email")]
         public string Email { get; set; } = null!;
 
         //FK for the Category table
