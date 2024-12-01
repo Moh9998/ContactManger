@@ -7,7 +7,7 @@
 <form asp-controller="Home" asp-action="Index" method="get">
     
         <div class="input-group mb-3">
-        <input type="text" class="form-control" name="search" placeholder="Search..." />
+        <input oninput="SubmitEvent" type="text" class="form-control" name="search" placeholder="Search..." />
             <button class="btn btn-outline-secondary" type="submit">Search</button>
         </div>
 
