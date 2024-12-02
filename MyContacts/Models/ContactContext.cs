@@ -3,12 +3,8 @@ using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.General;
 
 namespace MyContacts.Models
 {
-    public class ContactContext : DbContext
+    public class ContactContext(DbContextOptions<ContactContext> options) : DbContext(options)
     {
-        public ContactContext(DbContextOptions<ContactContext> options) : base(options)
-        {
-        }
-
         public DbSet<Contact> Contacts { get; set; } = null!;
         public DbSet<Category> Categories { get; set; } = null!;
         public DbSet<User> Users { get; set; } = null!;
